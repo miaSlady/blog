@@ -1,0 +1,21 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "node.js",
+  "main": "app.js",
+  "repository": "https://github.com/miaSlady/blog.git",
+  "author": "mia",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-formidable": "^1.1.0",
+    "koa-router": "^9.0.1",
+    "koa-static": "^5.0.0",
+    "mysql": "^2.18.1",
+    "string-random": "^0.1.3"
+  }
+}
