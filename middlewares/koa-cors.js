@@ -16,13 +16,13 @@ module.exports = async (ctx, next) => {
     "http://172.16.0.25:1818/",
     "http://localhost:1818/",
   ]
-  // console.log('request',ctx.header.referer,ctx.header.origin);
-  if(!ctx.header.origin) return  await next();
+  console.log('request',ctx.header.referer,ctx.header.origin);
+  // if(!ctx.header.origin) return  await next();
   if(allowDomain.includes(ctx.header.referer) || allowDomain.includes(ctx.header.origin + '/' )){
     // ctx.set('Access-Control-Allow-Origin', '*'); //允许来自所有域名请求(不携带cookie请求可以用*，如果有携带cookie请求必须指定域名)
     ctx.set("Access-Control-Allow-Origin", ctx.header.origin); // 只允许指定域名http://localhost:8080的请求
 
-    ctx.set('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, POST, DELETE'); // 设置所允许的HTTP请求方法
+    ctx.set('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, POST, DELETE,UPDATE'); // 设置所允许的HTTP请求方法
 
     ctx.set('Access-Control-Allow-Headers', 'x-requested-with, accept, origin, content-type,token'); // 字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段.
     // 服务器收到请求以后，检查了Origin、Access-Control-Request-Method和Access-Control-Request-Headers字段以后，确认允许跨源请求，就可以做出回应。
@@ -51,6 +51,7 @@ module.exports = async (ctx, next) => {
     /* 解决OPTIONS请求 */
     if (ctx.request.method == 'OPTIONS') {
         ctx.status = 200;
+        ctx.body="棒棒的"
     } else {
         await next();
     }

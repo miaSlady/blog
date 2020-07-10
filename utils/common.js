@@ -14,5 +14,6 @@ const errorResObj={
 
 
 module.exports={
-  responseObj
+  responseObj,
+  errorResObj
 }
